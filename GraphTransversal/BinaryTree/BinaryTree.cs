@@ -1,0 +1,22 @@
+﻿using GraphTransversal.GenericGraph.BinaryNode;
+
+namespace GraphTransversal.BinaryTree
+{
+    class BinaryTree<T>
+    {
+        private BinaryNode<T> Root
+        {
+            get; set;
+        }
+
+        public BinaryTree()
+        {
+            Root = null;
+        }
+
+        public virtual void Clear()
+        {
+            Root = null;
+        }
+    }
+}
