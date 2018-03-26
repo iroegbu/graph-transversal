@@ -7,34 +7,46 @@ using System.Threading.Tasks;
 
 namespace GraphTransversal.BinaryTree.Generators
 {
-    class BinaryTreeGenerator<T>
+    class BinaryTreeGenerator
     {
-        public BinaryTreeGenerator<T> Generate(Stack<BinaryNode<T>> Nodes)
+        BinaryTree<int> binaryTree;
+
+        public BinaryTree<int> Generate(Stack<int> Values)
         {
-            if (Nodes.Count == 0)
+            if (Values.Count == 0)
             {
-                throw new ArgumentException("Root node was not supplied.");
+                throw new ArgumentException("Empty stack supplied.");
             }
-            
+            binaryTree = CreateBinaryTree(Values.Pop());
 
-            bool branch = true; //true for left, false for right
-
-            foreach (var item in Nodes)
+            foreach (var node in Values)
             {
-                if (branch)
-                {
-
-                }
+                binaryTree.Root = PopulateBinaryTree(binaryTree.Root, node);
             }
-            return new BinaryTreeGenerator<T>();
-        }
-
-        private BinaryTree<T> CreateBinaryTree(BinaryNode<T> Node)
-        {
-            BinaryTree<T> binaryTree = new BinaryTree<T>();
-            binaryTree.Root = Node;
 
             return binaryTree;
+        }
+
+        private BinaryTree<int> CreateBinaryTree(int RootValue)
+        {
+            BinaryTree<int> binaryTree = new BinaryTree<int>();
+            binaryTree.Root.Value = RootValue;
+
+            return binaryTree;
+        }
+
+        private BinaryNode<int> PopulateBinaryTree(BinaryNode<int> binaryNode, int Value)
+        {
+            if (binaryNode.Value < Value)
+            {
+                binaryNode.Left = PopulateBinaryTree(binaryNode.Left, Value);
+            }
+            else
+            {
+                binaryNode.Right = PopulateBinaryTree(binaryNode.Right, Value);
+            }
+
+            return binaryNode;
         }
     }
 }

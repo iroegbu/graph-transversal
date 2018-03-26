@@ -4,7 +4,7 @@ namespace GraphTransversal.BinaryTree
 {
     class BinaryTree<T>
     {
-        private BinaryNode<T> Root
+        public BinaryNode<T> Root
         {
             get; set;
         }
