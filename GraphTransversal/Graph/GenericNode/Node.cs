@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GraphTransversal.GenericGraph.GenericNode
+namespace GraphTransversal.Graph.GenericNode
 {
     public class Node<T>
     {
-        public T Value { get; set; }
+        public T Name { get; set; }
         public NodeList<T> Children { get; set; }
 
         public Node() { }
         public Node(T _data) : this(_data, null) { }
         public Node(T _data, NodeList<T> _children)
         {
-            Value = _data;
+            Name = _data;
             Children = _children;
         }
 

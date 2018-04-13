@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace GraphTransversal.GenericGraph.GenericNode
+namespace GraphTransversal.Graph.GenericNode
 {
     public class NodeList<T> : Collection<Node<T>>
     {
         public NodeList() : base() { }
+
         public NodeList(int Count)
         {
             for (int i = 0; i < Count; i++)
@@ -17,7 +18,7 @@ namespace GraphTransversal.GenericGraph.GenericNode
         {
             foreach (var item in Items)
             {
-                if (item.Value.Equals(Value))
+                if (item.Name.Equals(Value))
                 {
                     return item;
                 }

@@ -1,4 +1,4 @@
-﻿using GraphTransversal.GenericGraph.BinaryNode;
+﻿using GraphTransversal.Graph.BinaryNode;
 
 namespace GraphTransversal.BinaryTree
 {

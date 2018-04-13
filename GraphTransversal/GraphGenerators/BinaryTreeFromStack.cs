@@ -1,17 +1,18 @@
-﻿using GraphTransversal.GenericGraph.BinaryNode;
+﻿using GraphTransversal.BinaryTree;
+using GraphTransversal.Graph.BinaryNode;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GraphTransversal.BinaryTree.Generators
+namespace GraphTransversal.GraphGenerators.Generators
 {
-    class BinaryTreeGenerator
+    class BinaryTreeFromStack
     {
-        BinaryTree<int> binaryTree;
+        BinaryTree<char> binaryTree;
 
-        public BinaryTree<int> Generate(Stack<int> Values)
+        public BinaryTree<char> Generate(Stack<char> Values)
         {
             if (Values.Count == 0)
             {
@@ -27,15 +28,15 @@ namespace GraphTransversal.BinaryTree.Generators
             return binaryTree;
         }
 
-        private BinaryTree<int> CreateBinaryTree(int RootValue)
+        private BinaryTree<char> CreateBinaryTree(char RootValue)
         {
-            BinaryTree<int> binaryTree = new BinaryTree<int>();
+            BinaryTree<char> binaryTree = new BinaryTree<char>();
             binaryTree.Root.Value = RootValue;
 
             return binaryTree;
         }
 
-        private BinaryNode<int> PopulateBinaryTree(BinaryNode<int> binaryNode, int Value)
+        private BinaryNode<char> PopulateBinaryTree(BinaryNode<char> binaryNode, char Value)
         {
             if (binaryNode.Value < Value)
             {
