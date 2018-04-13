@@ -1,11 +1,11 @@
-﻿using GraphTransversal.GenericGraph.GenericNode;
+﻿using GraphTransversal.Graph.GenericNode;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GraphTransversal.GenericGraph.BinaryNode
+namespace GraphTransversal.Graph.BinaryNode
 {
     class BinaryNode<T> : Node<T>
     {
@@ -13,7 +13,7 @@ namespace GraphTransversal.GenericGraph.BinaryNode
         public BinaryNode(T data) : base(data, null) { }
         public BinaryNode(T data, BinaryNode<T> left, BinaryNode<T> right)
         {
-            Value = data;
+            Name = data;
             NodeList<T> children = new NodeList<T>();
             AddChild(left);
             AddChild(right);

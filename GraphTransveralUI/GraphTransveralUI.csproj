@@ -34,8 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GraphLayout">
+      <HintPath>..\..\..\..\..\Downloads\SilverTreeContainer\TreeContainer\GraphLayout\GraphLayout\bin\Debug\GraphLayout.dll</HintPath>
+    </Reference>
+    <Reference Include="GraphTransversal">
+      <HintPath>..\GraphTransversal\bin\Debug\GraphTransversal.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -44,6 +51,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TreeContainer">
+      <HintPath>..\..\..\..\..\Downloads\SilverTreeContainer\TreeContainer\TreeContainer\bin\Debug\TreeContainer.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
