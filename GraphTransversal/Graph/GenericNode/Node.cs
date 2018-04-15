@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphTransversal.Graph.GenericNode
 {
-    public class Node<T>
+    public class Node<T> where T : IComparable
     {
         public T Name { get; set; }
         public NodeList<T> Children { get; set; }
@@ -22,6 +22,11 @@ namespace GraphTransversal.Graph.GenericNode
         public void AddChild(Node<T> child)
         {
             Children.Add(child);
+        }
+
+        public bool IsEqual(T Value)
+        {
+            return Value.CompareTo(Name) >= 0;
         }
     }
 }
