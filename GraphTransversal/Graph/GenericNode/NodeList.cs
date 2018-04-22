@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace GraphTransversal.Graph.GenericNode
 {
-    public class NodeList<T> : Collection<Node<T>>
+    public class NodeList<T> : Collection<Node<T>> where T:IComparable
     {
         public NodeList() : base() { }
 

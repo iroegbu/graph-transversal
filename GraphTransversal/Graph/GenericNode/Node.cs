@@ -26,7 +26,7 @@ namespace GraphTransversal.Graph.GenericNode
 
         public bool IsEqual(T Value)
         {
-            return Value.CompareTo(Name) >= 0;
+            return Value.CompareTo(Name) == 0;
         }
     }
 }

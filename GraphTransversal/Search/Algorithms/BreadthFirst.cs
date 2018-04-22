@@ -7,33 +7,32 @@ using System.Threading.Tasks;
 
 namespace GraphTransversal.Search
 {
-    class BreadthFirst<T> : ISearch where T : IComparable
+    class BreadthFirst<T> : ISearch<T> where T : IComparable
     {
         public string Name { get; }
-        public Node<T> Root;
-        public Stack<Node<T>> Open;
+        public Queue<Node<T>> Open;
 
-        public BreadthFirst(Node<T> Node)
+        public BreadthFirst()
         {
             Name = "Breadth-First Search";
-            Root = Node;
+            Open = new Queue<Node<T>>();
         }
 
-        private void InitSearch()
+        private void InitSearch(Node<T> Root)
         {
-            Open.Push(Root);
+            Open.Enqueue(Root);
         }
 
-        public (Node<T>, List<Node<T>>) Search(Node<T> Goal = null)
+        public (Node<T>, List<Node<T>>) Search(Node<T> Root, Node<T> Goal = null)
         {
             List<Node<T>> Closed = new List<Node<T>>();
             if (Open.Count == 0)
             {
-                InitSearch();
+                InitSearch(Root);
             }
             while (Open.Count != 0)
             {
-                var Current = Open.Pop();
+                var Current = Open.Dequeue();
                 Closed.Add(Current);
                 if (Current.IsEqual(Goal.Name))
                 {
@@ -42,7 +41,7 @@ namespace GraphTransversal.Search
                 var _Children = Current.Children.Reverse();
                 foreach (var _Child in _Children)
                 {
-                    Open.Push(_Child);
+                    Open.Enqueue(_Child);
                 }
             }
             return (Goal, Closed);
