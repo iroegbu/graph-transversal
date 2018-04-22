@@ -39,10 +39,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BinaryTree\BinaryTree.cs" />
-    <Compile Include="Generators\BinaryTree\FromJSON.cs" />
-    <Compile Include="Generators\BinaryTree\IBinaryGenerator.cs" />
-    <Compile Include="Graph\BinaryNode\BinaryNode.cs" />
+    <Compile Include="Generators\FromJSON.cs" />
+    <Compile Include="Generators\ITreeGenerator.cs" />
     <Compile Include="Graph\GenericNode\Node.cs" />
     <Compile Include="Graph\GenericNode\NodeList.cs" />
     <Compile Include="Search\Algorithms\BreadthFirst.cs" />

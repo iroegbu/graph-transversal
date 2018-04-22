@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	    xmlns:TreeContainer="clr-namespace:TreeContainer;assembly=TreeContainer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="591.922" Loaded="Window_Loaded">
+        Title="GraphTransversal" Height="450" Width="621.337">
     <Grid>
         <DockPanel Margin="0,0,0,0">
             <Menu DockPanel.Dock="Top">
@@ -20,24 +20,25 @@
                 </Grid.ColumnDefinitions>
                 <Rectangle Stroke="#FF000000" Grid.Column="0" VerticalAlignment="Stretch" Height="Auto" Fill="#FF8AB0E8" Margin="0,0,0,0" HorizontalAlignment="Left" Width="396"/>
                 <TreeContainer:TreeContainer TreeContainer:TreeContainer.Root="O" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="Tree" HorizontalBuffer="38" VerticalBuffer="48" HorizontalBufferSubtree="40" VerticalJustification="top">
-                    <TreeContainer:TreeNode x:Name="O" Content="O"/>
-                    <TreeContainer:TreeNode Content="E" TreeParent="O" x:Name="E" />
-                    <TreeContainer:TreeNode Content="F" TreeParent="O" x:Name="F"/>
-                    <TreeContainer:TreeNode Content="N" TreeParent="O" x:Name="N"/>
-                    <TreeContainer:TreeNode Content="A" TreeParent="E" x:Name="A"/>
-                    <TreeContainer:TreeNode Content="D" x:Name="D" TreeParent="E"/>
-                    <TreeContainer:TreeNode Content="B" x:Name="B" TreeParent="D"/>
-                    <TreeContainer:TreeNode Content="C" x:Name="C" TreeParent="D"/>
-                    <TreeContainer:TreeNode Content="G" x:Name="G" TreeParent="N"/>
-                    <TreeContainer:TreeNode Content="M" x:Name="M" TreeParent="N"/>
-                    <TreeContainer:TreeNode Content="H" x:Name="H" TreeParent="M"/>
-                    <TreeContainer:TreeNode Content="I" x:Name="I" TreeParent="M"/>
-                    <TreeContainer:TreeNode Content="J" x:Name="J" TreeParent="M"/>
-                    <TreeContainer:TreeNode Content="K" x:Name="K" TreeParent="M"/>
-                    <TreeContainer:TreeNode Content="L" x:Name="L" TreeParent="M"/>
+                    
                 </TreeContainer:TreeContainer>
-                <ComboBox x:Name="AlgorithmCmbBx" Grid.Column="1" HorizontalAlignment="Center" Margin="10,28,10,0" VerticalAlignment="Top" Width="150"/>
-                <Button Content="Search Graph" Grid.Column="1" HorizontalAlignment="Center" Margin="19,55,18.922,0" VerticalAlignment="Top" Width="148"/>
+                <StackPanel Grid.Column="1" Width="auto">
+                    <TextBox x:Name="NeedleTxt" Grid.Column="1" Margin="10,10,10,0" />
+                    <Button Content="Search Graph" Grid.Column="1" Margin="10,10,10,0" Width="148" Click="SearchGraphAction"/>
+                    <DataGrid 
+                        HorizontalAlignment="Stretch"
+                        Margin="10,10,10,0" 
+                        x:Name="ResultDtgd"
+                        VerticalAlignment="Stretch"
+                        AutoGenerateColumns="False"
+                        IsReadOnly="True"
+                        ItemsSource="{Binding SearchResult}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Algorithm" Binding="{Binding Path=AlgorithmName}" />
+                            <DataGridTextColumn Header="Time" Binding="{Binding Path=ElapsedTime}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
             </Grid>
         </DockPanel>
     </Grid>

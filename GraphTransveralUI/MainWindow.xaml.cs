@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,21 +28,17 @@ namespace GraphTransveralUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Node<string> Root;
+        private ObservableCollection<ResultDataObject> SearchResult;
+
         public MainWindow()
         {
             InitializeComponent();
+            SearchResult = new ObservableCollection<ResultDataObject>();
+            ResultDtgd.ItemsSource = SearchResult;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            var Algorithms = SearchAlgorithms.GetAlgorithms();
-
-            foreach (var algo in Algorithms)
-            {
-                AlgorithmCmbBx.Items.Add(algo.Name);
-            }
-        }
-
+        #region Graph setup
         private void LoadGraphJSON(object sender, RoutedEventArgs e)
         {
             var Dialog = new OpenFileDialog();
@@ -54,11 +51,18 @@ namespace GraphTransveralUI
                     using (StreamReader sr = new StreamReader(PathToFile))
                     {
                         JSONString = sr.ReadToEnd();
-                        var Root = ParseGraph(JSONString);
+                        Root = ParseGraph(JSONString);
                         RefreshGraph(Root);
                     }
                 }
             }
+        }
+
+        private Node<string> ParseGraph(string JSONString)
+        {
+            var Generator = new FromJSON(JSONString);
+            var _Root = Generator.Generate();
+            return _Root;
         }
 
         private void RefreshGraph(Node<string> Root)
@@ -84,12 +88,39 @@ namespace GraphTransveralUI
                 RefreshGraph(Child, SubTree);
             }
         }
+        #endregion
 
-        private Node<string> ParseGraph(string JSONString)
+        private void SearchGraphAction(object sender, RoutedEventArgs e)
         {
-            var Generator = new FromJSON(JSONString);
-            var Root = Generator.Generate();
-            return Root;
+            var NeedleValue = NeedleTxt.Text;
+            var NeedleNode = new Node<string>(NeedleValue);
+
+            var Algorithms = AlgorithmFactory<string>.GetAlgorithms();
+
+            SearchResult.Clear();
+
+            foreach (var Algorithm in Algorithms)
+            {
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                var Result = Algorithm.Search(Root, NeedleNode);
+                watch.Stop();
+                var TimeSpan = watch.Elapsed;
+                DisplayResult(Algorithm.Name, TimeSpan);
+            }
         }
+
+        private void DisplayResult(string AlgorithmName, TimeSpan ElapsedTime)
+        {
+            var TimeString = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                ElapsedTime.Hours, ElapsedTime.Minutes, ElapsedTime.Seconds,
+                ElapsedTime.Milliseconds);
+            SearchResult.Add(new ResultDataObject() { AlgorithmName = AlgorithmName, ElapsedTime = TimeString });
+        }
+    }
+
+    public class ResultDataObject
+    {
+        public string AlgorithmName { get; set; }
+        public string ElapsedTime { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using GraphTransversal.BinaryTree;
-using GraphTransversal.Graph.GenericNode;
+﻿using GraphTransversal.Graph.GenericNode;
 using System;
 using System.Collections.Generic;
 using System.Linq;
