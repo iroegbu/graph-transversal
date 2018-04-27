@@ -36,6 +36,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Algorithm" Binding="{Binding Path=AlgorithmName}" />
                             <DataGridTextColumn Header="Time" Binding="{Binding Path=ElapsedTime}" />
+                            <DataGridTextColumn Header="Visited Nodes" Binding="{Binding Path=Visited}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>

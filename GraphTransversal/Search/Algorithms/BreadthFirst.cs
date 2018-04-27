@@ -38,8 +38,8 @@ namespace GraphTransversal.Search
                 {
                     return (Goal, Closed);
                 }
-                var _Children = Current.Children.Reverse();
-                foreach (var _Child in _Children)
+
+                foreach (var _Child in Current.Children)
                 {
                     Open.Enqueue(_Child);
                 }
