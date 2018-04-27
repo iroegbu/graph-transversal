@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	    xmlns:TreeContainer="clr-namespace:TreeContainer;assembly=TreeContainer"
         mc:Ignorable="d"
-        Title="GraphTransversal" Height="450" Width="621.337">
+        Title="GraphTransversal" Height="450" Width="622" SizeToContent="Width">
     <Grid>
         <DockPanel Margin="0,0,0,0">
             <Menu DockPanel.Dock="Top">
