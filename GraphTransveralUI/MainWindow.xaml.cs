@@ -105,16 +105,17 @@ namespace GraphTransveralUI
                 var Result = Algorithm.Search(Root, NeedleNode);
                 watch.Stop();
                 var TimeSpan = watch.Elapsed;
-                DisplayResult(Algorithm.Name, TimeSpan);
+                DisplayResult(Algorithm.Name, TimeSpan, Result.Item2);
             }
         }
 
-        private void DisplayResult(string AlgorithmName, TimeSpan ElapsedTime)
+        private void DisplayResult(string AlgorithmName, TimeSpan ElapsedTime, List<Node<string>> VisitedNodes)
         {
             var TimeString = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
                 ElapsedTime.Hours, ElapsedTime.Minutes, ElapsedTime.Seconds,
                 ElapsedTime.Milliseconds);
-            SearchResult.Add(new ResultDataObject() { AlgorithmName = AlgorithmName, ElapsedTime = TimeString });
+            var Visited = string.Join(" -> ", VisitedNodes.Select(node => node.Name));
+            SearchResult.Add(new ResultDataObject() { AlgorithmName = AlgorithmName, ElapsedTime = TimeString, Visited = Visited });
         }
     }
 
@@ -122,5 +123,6 @@ namespace GraphTransveralUI
     {
         public string AlgorithmName { get; set; }
         public string ElapsedTime { get; set; }
+        public string Visited { get; set; }
     }
 }
