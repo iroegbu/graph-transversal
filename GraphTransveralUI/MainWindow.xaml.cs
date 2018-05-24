@@ -58,6 +58,16 @@ namespace GraphTransveralUI
             }
         }
 
+        private async Task LoadDefaultGraphAsync()
+        {
+            using (StreamReader r = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"/Resources/graph.json"))
+            {
+                string JSONString = await r.ReadToEndAsync();
+                Root = ParseGraph(JSONString);
+                RefreshGraph(Root);
+            }
+        }
+
         private Node<string> ParseGraph(string JSONString)
         {
             var Generator = new FromJSON(JSONString);
@@ -118,6 +128,11 @@ namespace GraphTransveralUI
                 ElapsedTime.Milliseconds);
             var Visited = string.Join(" -> ", VisitedNodes.Select(node => node.Name));
             SearchResult.Add(new ResultDataObject() { AlgorithmName = AlgorithmName, ElapsedTime = TimeString, Visited = Visited });
+        }
+
+        private async void OnLoadedAsync(object sender, RoutedEventArgs e)
+        {
+            await LoadDefaultGraphAsync();
         }
     }
 

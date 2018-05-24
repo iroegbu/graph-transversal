@@ -22,7 +22,7 @@
                 <TreeContainer:TreeContainer TreeContainer:TreeContainer.Root="O" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="Tree" HorizontalBuffer="38" VerticalBuffer="48" HorizontalBufferSubtree="40" VerticalJustification="top">
                     
                 </TreeContainer:TreeContainer>
-                <StackPanel Grid.Column="1" Width="auto">
+                <StackPanel Grid.Column="1" Width="auto" Loaded="OnLoadedAsync">
                     <Label VerticalAlignment="Center" Margin="10,5,10,-5">Goal</Label>
                     <TextBox x:Name="NeedleTxt" Grid.Column="1" Margin="10,0,10,0" />
                     <Label VerticalAlignment="Center" Margin="10,5,10,-5">Depth</Label>
