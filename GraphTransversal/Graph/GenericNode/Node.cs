@@ -9,6 +9,7 @@ namespace GraphTransversal.Graph.GenericNode
     public class Node<T> where T : IComparable
     {
         public T Name { get; set; }
+        public int Depth { get; set; }
         public NodeList<T> Children { get; set; }
 
         public Node() { }

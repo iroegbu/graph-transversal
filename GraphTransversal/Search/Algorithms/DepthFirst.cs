@@ -23,7 +23,7 @@ namespace GraphTransversal.Search
             Open.Push(Root);
         }
 
-        public (Node<T>, List<Node<T>>) Search(Node<T> Root, Node<T> Goal = null)
+        public (Node<T>, List<Node<T>>) Search(Node<T> Root, Node<T> Goal = null, int Depth = 0)
         {
             List<Node<T>> Closed = new List<Node<T>>();
             if (Open.Count == 0)
