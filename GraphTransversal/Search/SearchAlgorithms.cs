@@ -15,6 +15,8 @@ namespace GraphTransversal.Search
             {
                 new DepthFirst<T>(),
                 new BreadthFirst<T>(),
+                new DepthLimited<T>(),
+                new IterativeDeepening<T>()
             };
 
             return Algorithms;

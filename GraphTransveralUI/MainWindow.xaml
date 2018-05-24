@@ -23,7 +23,10 @@
                     
                 </TreeContainer:TreeContainer>
                 <StackPanel Grid.Column="1" Width="auto">
-                    <TextBox x:Name="NeedleTxt" Grid.Column="1" Margin="10,10,10,0" />
+                    <Label VerticalAlignment="Center" Margin="10,5,10,-5">Goal</Label>
+                    <TextBox x:Name="NeedleTxt" Grid.Column="1" Margin="10,0,10,0" />
+                    <Label VerticalAlignment="Center" Margin="10,5,10,-5">Depth</Label>
+                    <TextBox x:Name="DepthTxt" Grid.Column="1" Margin="10,0,10,0" />
                     <Button Content="Search Graph" Grid.Column="1" Margin="10,10,10,0" Width="148" Click="SearchGraphAction"/>
                     <DataGrid 
                         HorizontalAlignment="Stretch"

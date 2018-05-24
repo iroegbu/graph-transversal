@@ -93,7 +93,9 @@ namespace GraphTransveralUI
         private void SearchGraphAction(object sender, RoutedEventArgs e)
         {
             var NeedleValue = NeedleTxt.Text;
+            var DepthValue = DepthTxt.Text;
             var NeedleNode = new Node<string>(NeedleValue);
+            int.TryParse(DepthValue, out int Depth);
 
             var Algorithms = AlgorithmFactory<string>.GetAlgorithms();
 
@@ -102,7 +104,7 @@ namespace GraphTransveralUI
             foreach (var Algorithm in Algorithms)
             {
                 var watch = System.Diagnostics.Stopwatch.StartNew();
-                var Result = Algorithm.Search(Root, NeedleNode);
+                var Result = Algorithm.Search(Root, NeedleNode, Depth);
                 watch.Stop();
                 var TimeSpan = watch.Elapsed;
                 DisplayResult(Algorithm.Name, TimeSpan, Result.Item2);
