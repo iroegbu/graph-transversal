@@ -1,4 +1,5 @@
 ﻿using GraphTransversal.Graph.GenericNode;
+using GraphTransversal.Search.Algorithms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,8 @@ namespace GraphTransversal.Search
                 new DepthFirst<T>(),
                 new BreadthFirst<T>(),
                 new DepthLimited<T>(),
-                new IterativeDeepening<T>()
+                new IterativeDeepening<T>(),
+                new BiDirectional<T>()
             };
 
             return Algorithms;

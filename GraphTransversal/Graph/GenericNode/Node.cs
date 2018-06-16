@@ -11,13 +11,16 @@ namespace GraphTransversal.Graph.GenericNode
         public T Name { get; set; }
         public int Depth { get; set; }
         public NodeList<T> Children { get; set; }
+        public Node<T> Parent { get; set; }
 
         public Node() { }
-        public Node(T _data) : this(_data, null) { }
-        public Node(T _data, NodeList<T> _children)
+        public Node(T _data) : this(_data, null, null) { }
+        public Node(T _data, Node<T> _parent) : this(_data, null, _parent) { }
+        public Node(T _data, NodeList<T> _children, Node<T> _parent)
         {
             Name = _data;
             Children = _children;
+            Parent = _parent;
         }
 
         public void AddChild(Node<T> child)
