@@ -41,11 +41,15 @@
   <ItemGroup>
     <Compile Include="Generators\FromJSON.cs" />
     <Compile Include="Generators\ITreeGenerator.cs" />
+    <Compile Include="Generators\ListFromTree.cs" />
     <Compile Include="Graph\GenericNode\Node.cs" />
     <Compile Include="Graph\GenericNode\NodeList.cs" />
+    <Compile Include="Graph\GraphFunctions\GraphToList.cs" />
+    <Compile Include="Search\Algorithms\BiDirectional.cs" />
     <Compile Include="Search\Algorithms\BreadthFirst.cs" />
     <Compile Include="Search\Algorithms\DepthFirst.cs" />
     <Compile Include="Search\Algorithms\DepthLimited.cs" />
+    <Compile Include="Search\Algorithms\UniformCost.cs" />
     <Compile Include="Search\ISearch.cs" />
     <Compile Include="Search\Algorithms\IterativeDeepening.cs" />
     <Compile Include="Search\SearchAlgorithms.cs" />

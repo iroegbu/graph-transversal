@@ -20,6 +20,7 @@ using GraphLayout;
 using System.IO;
 using System.Windows.Forms;
 using GraphTransversal.Graph.GenericNode;
+using GraphTransversal.Graph.GraphFunctions;
 
 namespace GraphTransveralUI
 {
@@ -29,6 +30,7 @@ namespace GraphTransveralUI
     public partial class MainWindow : Window
     {
         private Node<string> Root;
+        List<Node<string>> ListOfNodes = new List<Node<string>>();
         private ObservableCollection<ResultDataObject> SearchResult;
 
         public MainWindow()
@@ -72,6 +74,7 @@ namespace GraphTransveralUI
         {
             var Generator = new FromJSON(JSONString);
             var _Root = Generator.Generate();
+            ListOfNodes = GraphToList.ToList(_Root);
             return _Root;
         }
 
@@ -88,7 +91,8 @@ namespace GraphTransveralUI
             if (Parent == null)
             {
                 SubTree = Tree.AddRoot(Root.Name);
-            } else
+            }
+            else
             {
                 SubTree = Tree.AddNode(Root.Name, Parent);
             }
@@ -104,7 +108,8 @@ namespace GraphTransveralUI
         {
             var NeedleValue = NeedleTxt.Text;
             var DepthValue = DepthTxt.Text;
-            var NeedleNode = new Node<string>(NeedleValue);
+            var NeedleNode = ListOfNodes.FirstOrDefault(x => x.IsEqual(NeedleValue)) ?? new Node<string>(NeedleValue);
+
             int.TryParse(DepthValue, out int Depth);
 
             var Algorithms = AlgorithmFactory<string>.GetAlgorithms();
