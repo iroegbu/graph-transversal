@@ -10,6 +10,21 @@ namespace GraphTransversal.Graph.GenericNode
     {
         public T Name { get; set; }
         public int Depth { get; set; }
+        public int Cost { get; set; }
+        public int TotalCost
+        {
+            get
+            {
+                if (Parent != null)
+                {
+                    return Parent.Cost + Cost;
+                }
+                else
+                {
+                    return Cost;
+                }
+            }
+        }
         public NodeList<T> Children { get; set; }
         public Node<T> Parent { get; set; }
 
